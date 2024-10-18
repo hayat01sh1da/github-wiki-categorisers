@@ -18,15 +18,15 @@ class ApplicationTest < Minitest::Test
     }
   end
 
+  def teardown
+    FileUtils.rm_rf(base_path) if Dir.exist?(base_path)
+  end
+
   def test_self_run
     error = assert_raises Application::NotImplementedError do
       Application.run
     end
     assert_equal(error.message, 'This method must be implemented in each subclass.')
-  end
-
-  def teardown
-    FileUtils.rm_rf(base_path) if Dir.exist?(base_path)
   end
 
   private

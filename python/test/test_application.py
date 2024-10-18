@@ -25,6 +25,13 @@ class TestApplication(unittest.TestCase):
         self.application = Application(self.base_path)
         self.application.run()
 
+    def tearDown(self):
+        if os.path.isdir(self.base_path):
+            shutil.rmtree(self.base_path)
+        for pycache in self.pycaches:
+            if os.path.isdir(pycache):
+                shutil.rmtree(pycache)
+
     def test_run(self):
         self.assertEqual(self.application.base_path, self.base_path)
         self.assertEqual(self.application.path_to_home, os.path.join(self.base_path, 'Home.md'))
@@ -42,13 +49,6 @@ class TestApplication(unittest.TestCase):
             '@test-owner': ['Owner記名ありページ.md'],
             'Owner記名なし': ['Owner記名なしページ1.md', 'Owner記名なしページ2.md']
         })
-
-    def tearDown(self):
-        if os.path.isdir(self.base_path):
-            shutil.rmtree(self.base_path)
-        for pycache in self.pycaches:
-            if os.path.isdir(pycache):
-                shutil.rmtree(pycache)
 
 if __name__ == '__main__':
     unittest.main()
