@@ -1,12 +1,12 @@
 ## 1. Environment
 
-- Python 3.13.0
+- Ruby 3.3.5
 
 ## 2. Execution
 
 ```command
-$ cd ./python/
-$ python main.py 
+$ cd ./ruby/
+$ ruby main.rb 
 ==================== Categosizing the Entire aya-issues Wiki pages... ====================
 ==================== Done categorising the Entire aya-issues Wiki pages 🎉 ====================
 ```
